@@ -9,6 +9,7 @@ def parse(data):
 
 def part1(data):
     """ Solves part 1 """
+    print(data)
     pass
 
 def part2(data):
@@ -27,7 +28,7 @@ def solve(data):
 
 if __name__ == '__main__':
     with cProfile.Profile() as pf:
-        DATA = parse(ut.get_data(0))
+        DATA = parse(ut.get_data(1))
         RESULT = solve(DATA)
         print(RESULT)
     pf.print_stats()
