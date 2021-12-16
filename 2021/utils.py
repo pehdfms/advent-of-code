@@ -1,5 +1,7 @@
 """ Utility functions for Advent of Code 2018 """
 import re
+from functools import reduce
+import operator
 
 class defaultlist(list):
     def __init__(self, fx):
@@ -62,3 +64,5 @@ def adjacents(coord, sub = []):
 def identity(obj):
     return obj
 
+def product(iterable):
+    return reduce(operator.mul, iterable, 1)
