@@ -83,20 +83,32 @@ def p2_parse_packets(data, start):
                 packet_values.append(value)
                 version += packet_version
 
+        table = {
+            0: "sum",
+            1: "prod",
+            2: "min",
+            3: "max",
+            5: "greater",
+            6: "lesser",
+            7: "equals",
+        }
+
         if dtype == 0:
-            return sum(packet_values), version, current
+            res = sum(packet_values), version, current
         if dtype == 1:
-            return ut.product(packet_values), version, current
+            res = ut.product(packet_values), version, current
         if dtype == 2:
-            return min(packet_values), version, current
+            res = min(packet_values), version, current
         if dtype == 3:
-            return max(packet_values), version, current
+            res = max(packet_values), version, current
         if dtype == 5:
-            return int(packet_values[0] > packet_values[1]), version, current
+            res = int(packet_values[0] > packet_values[1]), version, current
         if dtype == 6:
-            return int(packet_values[0] < packet_values[1]), version, current
+            res = int(packet_values[0] < packet_values[1]), version, current
         if dtype == 7:
-            return int(packet_values[0] == packet_values[1]), version, current
+            res = int(packet_values[0] == packet_values[1]), version, current
+
+        print(table[dtype], packet_values, res[0])
 
 
     return value, version, current
